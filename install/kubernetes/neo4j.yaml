@@ -20,7 +20,7 @@ spec:
     run: neo4j
     component: core
 ---
-apiVersion: 'apps/v1beta1'
+apiVersion: 'apps/v1'
 kind: StatefulSet
 metadata:
   name: neo4j-core
@@ -28,6 +28,10 @@ metadata:
 spec:
   serviceName: neo4j
   replicas: 1
+  selector:
+    matchLabels:
+      run: neo4j
+      component: core
   template:
     metadata:
       namespace: mico-system
